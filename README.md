@@ -11,13 +11,23 @@ pip install bpdb
 
 ## CLI Usage
 
-```bash
+### Send OTP
+
+```ini
 $ bpdb-cli send-otp 01710123456
 OTP sent to 01710123456
+```
 
+### Login
+
+```ini
 $ bpdb-cli login 01710123456 123456
 Logged in with phone number 01710123456
+```
 
+### Recharge Info
+
+```ini
 $ bpdb-cli recharge-info 01710123456 0120100112233
 +---------------------+--------------+-------------+--------------------------+
 |        Date         | Gross Amount | Energy Cost |          Tokens          |
@@ -26,7 +36,11 @@ $ bpdb-cli recharge-info 01710123456 0120100112233
 | 2024-10-01 17:47:27 |     5000     |   4281.47   | 1111-2222-3333-4444-5555 |
 | 2025-01-01 23:41:46 |     5000     |   4785.47   | 1111-2222-3333-4444-5555 |
 +---------------------+--------------+-------------+--------------------------+
+```
 
+### Consumer Info
+
+```ini
 $ bpdb-cli consumer-info                         
 +------------------+--------------------+
 |     Division     |      Mymensingh    |
