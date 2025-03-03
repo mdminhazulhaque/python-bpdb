@@ -1,12 +1,12 @@
 # python-bpdb
 
 ## Overview
-The `python-bpdb` is a Python module designed for reading and interacting with smart meters through an HTTP API. It provides a simple interface for retrieving and sending data to smart meters, making it easier to integrate smart meter functionality into your applications.
+The `python-bpdb` is a Python module designed for reading and interacting with smart meters through an HTTP API. It provides a simple interface for retrieving consumer details and last recharge data.
 
 ## Installation
 
 ```bash
-pip install python-bpdb
+pip install bpdb
 ```
 
 ## CLI Usage
