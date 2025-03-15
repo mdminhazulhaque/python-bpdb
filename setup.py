@@ -18,7 +18,7 @@ else:
 
 setup(
     name='bpdb',
-    version='0.0.1',
+    version='0.0.2',
     author='Md Minhazul Haque',
     author_email='mdminhazulhaque@gmail.com',
     description='A Python module for Bangladesh Railway\'s Ticketing System',
