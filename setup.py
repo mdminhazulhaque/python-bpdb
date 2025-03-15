@@ -18,10 +18,10 @@ else:
 
 setup(
     name='bpdb',
-    version='0.0.2',
+    version='0.0.3',
     author='Md Minhazul Haque',
     author_email='mdminhazulhaque@gmail.com',
-    description='A Python module for Bangladesh Railway\'s Ticketing System',
+    description='A Python module for Bangladesh Power Development Board (BPDB) Smart Meters',
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=["bpdb"],
