@@ -1,7 +1,13 @@
-# bpdb
+# 🔌 BPDB Smart Meter CLI
+
+[![PyPI version](https://badge.fury.io/py/bpdb.svg)](https://badge.fury.io/py/bpdb)
+[![Python Versions](https://img.shields.io/pypi/pyversions/bpdb.svg)](https://pypi.org/project/bpdb/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://pepy.tech/badge/bpdb)](https://pepy.tech/project/bpdb)
 
 ## Overview
-The `bpdb` is a Python module designed for reading and interacting with smart meters through an HTTP API. It provides a simple interface for retrieving consumer details and last recharge data.
+
+The `bpdb` is a Python module designed for reading and interacting with Bangladesh Power Development Board (BPDB) smart meters through an HTTP API. It provides a simple interface for retrieving consumer details and recharge data.
 
 ## Installation
 
