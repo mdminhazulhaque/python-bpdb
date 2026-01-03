@@ -5,49 +5,104 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://pepy.tech/badge/bpdb)](https://pepy.tech/project/bpdb)
 
-## Overview
+A Python CLI tool to collect information about **Bangladesh Power Development Board (BPDB)** prepaid electricity accounts. Get real-time consumer details, recharge history, and manage your smart meter directly from your terminal.
 
-The `bpdb` is a Python module designed for reading and interacting with Bangladesh Power Development Board (BPDB) smart meters through an HTTP API. It provides a simple interface for retrieving consumer details and recharge data.
+## ✨ Features
 
-## Installation
+- 📱 **OTP Authentication**: Secure login with phone number verification
+- 👤 **Consumer Info**: Retrieve detailed customer and meter information
+- 🔄 **Recharge History**: Track your payment and token generation records
+- ⚡ **Smart Meter Integration**: Direct API integration with BPDB's official endpoints
+- 🚀 **Fast & Lightweight**: Built with Python and designed for speed
+- 🔒 **Secure**: Phone number-based authentication with OTP
 
+## 📦 Installation
+
+### From PyPI (Recommended)
 ```bash
 pip install bpdb
 ```
 
-## CLI Usage
+### From Source
+```bash
+git clone https://github.com/mdminhazulhaque/python-bpdb.git
+cd python-bpdb
+pip install -e .
+```
 
-### Send OTP
+## 🚀 Quick Start
 
-```ini
+After installation, use the `bpdb-cli` command:
+
+```bash
+# Get help
+bpdb-cli --help
+
+# Send OTP to your phone
+bpdb-cli send-otp 01710123456
+
+# Login with OTP
+bpdb-cli login 01710123456 123456
+
+# Get consumer information
+bpdb-cli consumer-info
+```
+
+## 📖 Usage
+
+```
+Usage: bpdb-cli [OPTIONS] COMMAND [ARGS]...
+
+  A CLI tool for BPDB Smart Meter management.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  send-otp       Send OTP to phone number for authentication
+  login          Login with phone number and OTP
+  consumer-info  Get detailed consumer and meter information
+  recharge-info  Get recharge and token generation history
+```
+
+## 💡 Examples
+
+### 📱 Send OTP
+
+Send an OTP to your registered phone number:
+
+```bash
 $ bpdb-cli send-otp 01710123456
+```
+
+**Sample Output:**
+```
 OTP sent to 01710123456
 ```
 
-### Login
+### 🔐 Login
 
-```ini
+Login using your phone number and the OTP received:
+
+```bash
 $ bpdb-cli login 01710123456 123456
+```
+
+**Sample Output:**
+```
 Logged in with phone number 01710123456
 ```
 
-### Recharge Info
+### 👤 Get Consumer Information
 
-```ini
-$ bpdb-cli recharge-info 01710123456 0120100112233
-+---------------------+--------------+-------------+--------------------------+
-|        Date         | Gross Amount | Energy Cost |          Tokens          |
-+---------------------+--------------+-------------+--------------------------+
-| 2024-05-01 16:15:04 |     5000     |   4662.19   | 1111-2222-3333-4444-5555 |
-| 2024-10-01 17:47:27 |     5000     |   4281.47   | 1111-2222-3333-4444-5555 |
-| 2025-01-01 23:41:46 |     5000     |   4785.47   | 1111-2222-3333-4444-5555 |
-+---------------------+--------------+-------------+--------------------------+
+Retrieve comprehensive customer and meter details:
+
+```bash
+$ bpdb-cli consumer-info
 ```
 
-### Consumer Info
-
-```ini
-$ bpdb-cli consumer-info                         
+**Sample Output:**
+```
 +------------------+--------------------+
 |     Division     |      Mymensingh    |
 |    Meter Type    |          1P        |
@@ -60,8 +115,71 @@ $ bpdb-cli consumer-info
 +------------------+--------------------+
 ```
 
-## Contributing
-Contributions are welcome! If you have suggestions for improvements or find bugs, please open an issue or submit a pull request.
+### 🔄 Get Recharge History
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+View your recent payment and token generation records:
+
+```bash
+$ bpdb-cli recharge-info 01710123456 0120100112233
+```
+
+**Sample Output:**
+```
++---------------------+--------------+-------------+--------------------------+
+|        Date         | Gross Amount | Energy Cost |          Tokens          |
++---------------------+--------------+-------------+--------------------------+
+| 2024-05-01 16:15:04 |     5000     |   4662.19   | 1111-2222-3333-4444-5555 |
+| 2024-10-01 17:47:27 |     5000     |   4281.47   | 1111-2222-3333-4444-5555 |
+| 2025-01-01 23:41:46 |     5000     |   4785.47   | 1111-2222-3333-4444-5555 |
++---------------------+--------------+-------------+--------------------------+
+```
+
+## 🛠️ Development
+
+### Prerequisites
+
+- Python 3.6 or higher
+- pip package manager
+
+### Setting up for Development
+
+1. Clone the repository:
+```bash
+git clone https://github.com/mdminhazulhaque/python-bpdb.git
+cd python-bpdb
+```
+
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install in development mode:
+```bash
+pip install -e .
+```
+
+### Dependencies
+
+- `requests` - HTTP library for API calls
+- `click` - Command line interface framework
+- `tabulate` - Pretty-print tabular data
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## ⚠️ Disclaimer
+
+This is an unofficial tool. Use at your own discretion. The authors are not responsible for any issues that may arise from using this tool.
