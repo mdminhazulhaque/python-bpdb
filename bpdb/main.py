@@ -8,6 +8,8 @@ Provides commands to send OTP, login, check recharge info, and view consumer det
 
 import click
 import sys
+import functools
+import requests
 from tabulate import tabulate
 from .bpdb import BPDBSmartMeterAPI
 from . import __version__
@@ -15,9 +17,18 @@ from . import __version__
 
 def handle_api_error(func):
     """Decorator to handle API errors gracefully."""
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
+            click.echo(
+                f"❌ Could not reach the BPDB API at {BPDBSmartMeterAPI.BPDB_BASE_URL}.\n"
+                "   The service may be down or temporarily unreachable from your network. "
+                "Please try again later.",
+                err=True,
+            )
+            sys.exit(1)
         except Exception as e:
             click.echo(f"❌ Error: {str(e)}", err=True)
             sys.exit(1)
