@@ -6,9 +6,11 @@ smart meter API endpoints.
 
 Example:
     >>> from bpdb import BPDBSmartMeterAPI
-    >>> client = BPDBSmartMeterAPI()
-    >>> client.send_otp(phone_number="01XXXXXXXXX")
-    >>> client.login(phone_number="01XXXXXXXXX", otp="123456")
+    >>> api = BPDBSmartMeterAPI()
+    >>> api.send_otp(phone_number="01XXXXXXXXX")
+    >>> token = api.login(phone_number="01XXXXXXXXX", otp="123456")
+    >>> client = BPDBSmartMeterAPI(token=token)   # stateless; pass token back in
+    >>> client.consumer_info()
 """
 
 from .bpdb import BPDBSmartMeterAPI

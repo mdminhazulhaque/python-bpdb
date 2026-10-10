@@ -182,4 +182,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ⚠️ Disclaimer
 
-This is an unofficial tool. Use at your own discretion. The authors are not responsible for any issues that may arise from using this tool.
+This is an independent, unofficial tool and is not affiliated with, endorsed by, or connected to the Bangladesh Power Development Board (BPDB).
+
+Every piece of information this tool retrieves is **already publicly available** to any consumer through the official customer portal and mobile app. This project does **not** reverse engineer, bypass, or circumvent anything — it simply accesses the same publicly accessible consumer information programmatically and presents it in a convenient format.
+
+Please only look up accounts you are authorized to access. Use at your own discretion; the authors are not responsible for any issues that may arise from using this tool.

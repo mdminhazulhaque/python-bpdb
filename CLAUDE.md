@@ -10,16 +10,17 @@ This is a Python CLI tool for interacting with Bangladesh Power Development Boar
 
 ### Core Components
 
-**bpdb/bpdb.py** - API Client Layer
-- `BPDBSmartMeterAPI` class handles all HTTP communication with BPDB endpoints
+**bpdb/bpdb.py** - stateless API engine
+- `BPDBSmartMeterAPI(token=None)` handles all HTTP communication, **no file/env I/O**
+- Safe to instantiate per-request in FastAPI/Django; the caller owns the token
 - Base URL: `http://202.51.186.182:33262/api/v1`
 - Token-based authentication using Bearer tokens
-- Token persistence via configparser stored at `~/.python-bpdb-api-config`
-- Methods: `send_otp()`, `login()`, `consumer_info()`, `recharge_info()`
+- `login()` returns the token (and sets `self.token`) but does NOT persist it
+- Methods return plain JSON-serializable dicts: `send_otp()`, `login()`, `consumer_info()`, `recharge_info()`
 
-**bpdb/main.py** - CLI Layer
-- Click-based CLI with command group pattern
-- Commands registered via `app.add_command()` pattern
+**bpdb/main.py** - CLI Layer (owns persistence)
+- Click-based CLI with command group pattern, commands registered via `app.add_command()`
+- **Token persistence lives here, not in the engine**: `login` saves to `~/.python-bpdb-api-config` (configparser); authenticated commands read it back and pass `token=` into the engine
 - Error handling through `handle_api_error` decorator wrapper
 - Entry point: `app()` function mapped to `bpdb-cli` in pyproject.toml
 - Uses tabulate for formatted output display
